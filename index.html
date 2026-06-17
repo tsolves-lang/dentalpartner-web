@@ -11,8 +11,8 @@
     <!-- Navigering -->
     <header>
         <a href="index.html" class="logo">
-    <img src="images/logo.png" alt="Dental Partner Logotyp">
-</a>
+            <img src="images/logo.png" alt="Dental Partner Logotyp">
+        </a>
         <nav>
             <a href="index.html">Startsida</a>
             <a href="tjanster.html">Tjänster</a>
@@ -20,18 +20,21 @@
         </nav>
     </header>
 
-    <!-- Hjälte-sektion (Hero) -->
-    <section class="hero">
-        <h1>Dentaltransporter med kvalité.</h1>
-        <p>Snabba leveranser och hög servicenivå inom dentalbranschen. Ett välfungerande koncept sedan 1995. Fokusera på kvalité, vi sköter logistiken.</p>
-        <a href="tel:+46733211751" class="btn-primary">RING OSS: 073-321 17 51</a>
+    <!-- Hjälte-sektion (Hero) med Parallax -->
+    <section class="hero parallax-container">
+        <div class="parallax-bg"></div>
+        <div class="hero-content">
+            <h1>Dentaltransporter med kvalité.</h1>
+            <p>Snabba leveranser och hög servicenivå inom dentalbranschen. Ett välfungerande koncept sedan 1995. Fokusera på kvalité, vi sköter logistiken.</p>
+            <a href="tel:+46733211751" class="btn-primary">RING OSS: 073-321 17 51</a>
+        </div>
     </section>
 
     <!-- Varför välja oss / Tjänster sektion -->
     <section class="bg-gray">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 40px;">Vi underlättar vardagen för tandläkaren.</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto;">Sedan start har vi varit specialiserade på att erbjuda leveranser exklusivt till tandtekniker och tandläkare. Dina arbeten hämtas upp snabbare i våra specialanpassade vita personbilar (VW Golf/Polo).</p>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto;">Sedan start har vi varit specialiserade på att erbjuda leveranser exklusivt till tandtekniker och tandläkare. Dina arbeten hämtas upp snabbare än hos andra.</p>
             
             
             <div class="services-grid">
@@ -86,6 +89,9 @@
             <p>&copy; 2026 Dental Partner. Alla rättigheter reserverade. Webbplatsen använder inga spårningskakor.</p>
         </div>
     </footer>
+
+    <!-- Kopplar in vår logik för animationer -->
+    <script src="js/main.js"></script>
 
 </body>
 </html>

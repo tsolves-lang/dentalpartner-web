@@ -103,11 +103,11 @@ p {
   color: var(--color-text-muted);
 }
 
-/* Hero-sektionens specifika design */
+/* --- Hero-sektion (Standard för undersidor) --- */
 .hero {
   text-align: center;
   padding: 120px 50px;
-  background-color: var(--color-bg-light-gray); /* Här kan vi lägga en bild senare */
+  background-color: var(--color-bg-light-gray);
   border-bottom: 1px solid #eaeaea;
 }
 
@@ -127,7 +127,60 @@ p {
 .hero .btn-primary {
   font-size: 18px;
   padding: 16px 32px;
-  border-radius: 50px; /* Gör knappen snyggt rundad */
+  border-radius: 50px;
+  box-shadow: 0 4px 6px rgba(149, 193, 30, 0.2);
+}
+
+/* --- Parallax Hero Sektion (Speciell för Startsidan) --- */
+.parallax-container {
+  position: relative;
+  overflow: hidden; /* Gömmer den del av bakgrunden som "svämmar över" */
+  padding: 150px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 70vh; /* Gör sektionen härligt stor */
+  background-color: transparent; /* Åsidosätter standard hero-bakgrund */
+}
+
+/* Det rörliga bakgrundslagret */
+.parallax-bg {
+  position: absolute;
+  top: -20%; /* Börjar lite högre upp för att ha marginal när den scrollar */
+  left: 0;
+  width: 100%;
+  height: 140%; /* Större än containern för att kunna röra sig */
+  background: linear-gradient(135deg, #f0f4f8 0%, #e0e8f0 100%); /* Snygg klinisk gradient */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Innehållet överst i Parallaxen */
+.hero-content {
+  position: relative;
+  z-index: 2; /* Ser till att texten ligger OVANPÅ bakgrunden */
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 56px;
+  color: var(--color-text-main);
+  margin-bottom: 24px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  color: var(--color-text-muted);
+  margin-bottom: 32px;
+}
+
+.hero-content .btn-primary {
+  font-size: 18px;
+  padding: 16px 32px;
+  border-radius: 50px;
   box-shadow: 0 4px 6px rgba(149, 193, 30, 0.2);
 }
 
@@ -309,6 +362,7 @@ footer {
   text-align: center;
   font-size: 14px;
 }
+
 /* Styling för fördjupningssidan (Tjänster) */
 .features-list {
   display: flex;
@@ -335,4 +389,59 @@ footer {
   line-height: 1.7;
   margin-bottom: 0;
   max-width: 100%; /* Låter texten använda hela kortets bredd för skön läsbarhet */
+}
+
+/* Layout för Om oss-sidan */
+.about-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* Sifferrutorna för statistik */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.stat-box {
+  background-color: var(--color-bg-white);
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  border: 1px solid #eaeaea;
+}
+
+.stat-number {
+  display: block;
+  font-size: 42px;
+  font-weight: bold;
+  color: var(--color-brand-green);
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/* Responsiv justering för större skärmar */
+@media (min-width: 768px) {
+  .about-layout {
+    flex-direction: row;
+    align-items: center;
+  }
+  .about-main-text {
+    flex: 1;
+  }
+  .stats-grid {
+    flex: 1;
+    grid-template-columns: 1fr; /* Staplar rutorna snyggt till höger om texten på desktop */
+  }
 }
