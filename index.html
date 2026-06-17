@@ -101,6 +101,34 @@
         </div>
     </section>
 
+    <section class="horizontal-section" id="horizontal-section">
+        <div class="sticky-wrapper">
+            <h2 class="horizontal-title">Detaljer som gör skillnad</h2>
+            <div class="horizontal-track" id="horizontal-track">
+                <div class="horizontal-card">
+                    <span class="card-number">01</span>
+                    <h3>Kliniskt rent</h3>
+                    <p>Vi hanterar dina avtryck och arbeten i anpassade, skyddande miljöer under hela transporten.</p>
+                </div>
+                <div class="horizontal-card">
+                    <span class="card-number">02</span>
+                    <h3>Personliga bud</h3>
+                    <p>Samma ansikten som besöker er klinik skapar trygghet och rutiner som fungerar felfritt varje dag.</p>
+                </div>
+                <div class="horizontal-card">
+                    <span class="card-number">03</span>
+                    <h3>Miljösmart</h3>
+                    <p>Genom våra rutt-optimerade slingor minskar vi klimatavtrycket samtidigt som vi kapar leveranstiderna.</p>
+                </div>
+                <div class="horizontal-card">
+                    <span class="card-number">04</span>
+                    <h3>Direkt till Lab</h3>
+                    <p>Inga onödiga mellanhänder eller omlastningar. Från hand till hand, snabbt och säkert.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="cta-section fade-in">
         <div class="container">
             <h2>Redo att boka din första transport?</h2>
@@ -136,7 +164,6 @@
             }, appearOptions);
             faders.forEach(fader => { appearOnScroll.observe(fader); });
 
-            // Försäkra att element syns om JS fastnar
             setTimeout(() => {
                 faders.forEach(fader => fader.classList.add('visible'));
             }, 1500);
@@ -190,9 +217,37 @@
                     }
                 });
             }
+
+            // --- 4. Parallell Parallax / Horisontell Scroll ---
+            const horizontalSection = document.getElementById('horizontal-section');
+            const horizontalTrack = document.getElementById('horizontal-track');
+
+            if (horizontalSection && horizontalTrack) {
+                window.addEventListener('scroll', () => {
+                    const rect = horizontalSection.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    // När sektionen låser sig i toppen av fönstret
+                    if (rect.top <= 0 && rect.bottom >= windowHeight) {
+                        const scrollDistance = -rect.top;
+                        const scrollableHeight = rect.height - windowHeight;
+                        let progress = scrollDistance / scrollableHeight;
+                        progress = Math.max(0, Math.min(1, progress));
+                        
+                        // Konvertera progress till X-translateringsvärde
+                        // Lägger till 50 för snygg padding i slutet
+                        const trackWidth = horizontalTrack.scrollWidth - window.innerWidth + 50; 
+                        horizontalTrack.style.transform = `translateX(-${progress * trackWidth}px)`;
+                    } else if (rect.top > 0) {
+                        horizontalTrack.style.transform = `translateX(0px)`;
+                    } else if (rect.bottom < windowHeight) {
+                        const trackWidth = horizontalTrack.scrollWidth - window.innerWidth + 50;
+                        horizontalTrack.style.transform = `translateX(-${trackWidth}px)`;
+                    }
+                });
+            }
         }
 
-        // Bomb-säker initiering av scriptet oavsett webbläsarmiljö
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initAnimations);
         } else {

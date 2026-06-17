@@ -444,6 +444,16 @@ footer {
   transform: translateY(0);
 }
 
+/* --- BOMB-SÄKER HERO ANIMATION (Kräver inte JS) --- */
+.hero-animate {
+  animation: heroFadeIn 1s ease-out forwards;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* --- Kinetisk Reveal Effekt --- */
 .kinetic-section {
   background-color: var(--color-bg-white);
@@ -572,4 +582,77 @@ footer {
 
 .van-icon.visible {
   opacity: 1;
+}
+
+/* --- Parallell Parallax / Horisontell Scroll --- */
+.horizontal-section {
+  height: 300vh; /* Ger utrymme att scrolla neråt för att driva sidorörelsen */
+  position: relative;
+  background-color: var(--color-bg-white);
+}
+
+.sticky-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Låser sektionen till skärmens höjd */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 50px;
+}
+
+.horizontal-title {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 0 50px;
+  color: var(--color-text-main);
+}
+
+.horizontal-track {
+  display: flex;
+  gap: 40px;
+  padding: 0 50px;
+  width: max-content;
+  will-change: transform; /* Optimerar prestandan för animationen */
+}
+
+.horizontal-card {
+  width: 350px;
+  height: 400px;
+  background: var(--color-bg-light-gray);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-top: 4px solid var(--color-brand-green);
+  flex-shrink: 0; /* Förhindrar att korten trycks ihop */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.horizontal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(149, 193, 30, 0.15);
+}
+
+.horizontal-card .card-number {
+  font-size: 60px;
+  font-weight: bold;
+  color: rgba(149, 193, 30, 0.2);
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.horizontal-card h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: var(--color-text-main);
+}
+
+.horizontal-card p {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  margin: 0;
 }
