@@ -238,3 +238,74 @@ p {
 .service-card:hover .route-map-icon .dot {
   transform: scale(1.1);
 }
+
+/* Kontakt/CTA Sektion */
+.cta-section {
+  text-align: center;
+  padding: 100px 50px;
+  background-color: var(--color-bg-white);
+}
+
+.cta-section h2 {
+  color: var(--color-text-main);
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  margin: 0 auto 40px auto;
+}
+
+/* Centralt placerad kontaktbox */
+.contact-box {
+  background-color: var(--color-bg-light-gray);
+  padding: 40px;
+  border-radius: 12px;
+  display: inline-block;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  border: 1px solid #eaeaea;
+}
+
+/* Telefonlänken */
+.phone-link {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--color-brand-green);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.phone-link:hover {
+  color: var(--color-brand-green-hover);
+  transform: scale(1.02);
+}
+
+.phone-icon {
+  font-size: 28px;
+}
+
+.opening-hours {
+  font-size: 15px !important;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 15px !important;
+}
+
+.email-text {
+  font-size: 14px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Sidfot */
+footer {
+  background-color: var(--color-text-main);
+  color: #9CA3AF;
+  padding: 30px 50px;
+  text-align: center;
+  font-size: 14px;
+}
