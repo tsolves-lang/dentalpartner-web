@@ -20,7 +20,7 @@
     </header>
 
     <section class="hero parallax-container">
-        <div class="hero-content">
+        <div class="hero-content fade-in">
             <h1>Dentaltransporter med kvalité.</h1>
             <p>Snabba leveranser och hög servicenivå inom dentalbranschen. Ett välfungerande koncept sedan 1995. Fokusera på kvalité, vi sköter logistiken.</p>
             <a href="tel:+46733211751" class="btn-primary">RING OSS: 070-791 35 25</a>
@@ -29,17 +29,17 @@
 
     <section class="bg-gray">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 40px;">Vi underlättar vardagen för tandläkaren.</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto;">Sedan start har vi varit specialiserade på att erbjuda leveranser exklusivt till tandtekniker och tandläkare. Dina arbeten hämtas upp snabbare än hos andra.</p>
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 40px;">Vi underlättar vardagen för tandläkaren.</h2>
+            <p class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 50px auto;">Sedan start har vi varit specialiserade på att erbjuda leveranser exklusivt till tandtekniker och tandläkare. Dina arbeten hämtas upp snabbare än hos andra.</p>
             
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-in" style="transition-delay: 0.1s;">
                     <img src="images/golf-bil.jpg" alt="Vit VW Golf eller Polo" class="service-icon">
                     <h3>Vi hämtar ofta!</h3>
                     <p>Våra medarbetare är hos tandläkarna flera gånger om dagen. Ni får era arbeten snabbare.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card fade-in" style="transition-delay: 0.2s;">
                     <div class="route-map-icon">
                         <span class="dot pin-a"></span>
                         <span class="line"></span>
@@ -49,7 +49,7 @@
                     <p>Med vårt koncept kan ert lab befinna sig på flera ställen. Vi har delat upp staden i flera distrikt för effektiv och miljövänlig transport.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card fade-in" style="transition-delay: 0.3s;">
                     <img src="images/papperspase.jpg" alt="Liten vit papperspåse" class="service-icon">
                     <h3>Gratis Upphämtning</h3>
                     <p>Vi bjuder på upphämtningen om det sker i samband med leverans. Vi har en låg taxa som andra budverksamheter inte kan matcha.</p>
@@ -58,7 +58,7 @@
         </div>
     </section>
 
-    <section class="cta-section">
+    <section class="cta-section fade-in">
         <div class="container">
             <h2>Redo att boka din första transport?</h2>
             <p>Vi finns här för att underlätta din logistik. Ring oss direkt för att beställa en omedelbar upphämtning eller för att diskutera ett fast schema för ditt dentallab.</p>
@@ -79,5 +79,26 @@
         </div>
     </footer>
 
+    <!-- Script för fade-in effekter vid scroll -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                });
+            }, appearOptions);
+            faders.forEach(fader => { appearOnScroll.observe(fader); });
+            
+            // Tvinga hero-innehållet att visas direkt när sidan laddas
+            const heroContent = document.querySelector('.hero-content.fade-in');
+            if(heroContent) {
+                setTimeout(() => { heroContent.classList.add('visible'); }, 100);
+            }
+        });
+    </script>
 </body>
 </html>
