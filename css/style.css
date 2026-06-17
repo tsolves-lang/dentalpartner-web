@@ -37,6 +37,14 @@ header {
   font-weight: bold;
   color: var(--color-brand-green);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Lägg till denna del för att styra bildens storlek */
+.logo img {
+  max-height: 50px; /* Ändra denna siffra för att göra loggan större eller mindre */
+  width: auto;
 }
 
 nav a {
