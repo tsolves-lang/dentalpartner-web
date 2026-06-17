@@ -20,7 +20,7 @@
     </header>
 
     <section class="hero parallax-container">
-        <div class="hero-content fade-in">
+        <div class="hero-content hero-animate">
             <h1>Dentaltransporter med kvalité.</h1>
             <p>Snabba leveranser och hög servicenivå inom dentalbranschen. Ett välfungerande koncept sedan 1995. Fokusera på kvalité, vi sköter logistiken.</p>
             <a href="tel:+46733211751" class="btn-primary">RING OSS: 070-791 35 25</a>
@@ -82,13 +82,122 @@
 
     <section class="dynamic-route-section">
         <div class="container">
-            <h2 class="fade-in" style="text-align: center; margin-bottom: 40px;">Följ er leverans i realtid</h2>
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 40px;">Optimerade rutter för snabbare leveranser</h2>
             <div class="route-map-container fade-in">
                 
                 <svg class="route-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
                     <path id="route-path" d="M 50 350 C 150 350, 200 150, 400 150 C 600 150, 650 50, 750 50" fill="none" stroke="#E2E8F0" stroke-width="8" stroke-linecap="round"/>
-                    
                     <path id="route-path-active" d="M 50 350 C 150 350, 200 150, 400 150 C 600 150, 650 50, 750 50" fill="none" stroke="var(--color-brand-green)" stroke-width="8" stroke-linecap="round"/>
                     
                     <circle cx="50" cy="350" r="12" fill="var(--color-brand-green)" />
-                    <text x="50" y="385" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="var
+                    <text x="50" y="385" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="var(--color-text-main)">Labbet</text>
+                    
+                    <circle cx="750" cy="50" r="12" fill="var(--color-text-main)" />
+                    <text x="750" y="25" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="var(--color-text-main)">Kliniken</text>
+                </svg>
+                
+                <div class="van-icon" id="van-icon">🚐</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section fade-in">
+        <div class="container">
+            <h2>Redo att boka din första transport?</h2>
+            <p>Vi finns här för att underlätta din logistik. Ring oss direkt för att beställa en omedelbar upphämtning eller för att diskutera ett fast schema för ditt dentallab.</p>
+            
+            <div class="contact-box">
+                <a href="tel:+46733211751" class="phone-link">
+                    <span class="phone-icon">📞</span> 070-791 35 25
+                </a>
+                <p class="opening-hours">Måndag – Torsdag: 06:00 – 15:30 <br> Fredag: 06:00 – 13:00</p>
+                <p class="email-text">E-post: gbg.dentalpartnerab@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Dental Partner. Alla rättigheter reserverade. Webbplatsen använder inga spårningskakor.</p>
+        </div>
+    </footer>
+
+    <script>
+        function initAnimations() {
+            // --- 1. Fade-in effekter ---
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                });
+            }, appearOptions);
+            faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+            // Försäkra att element syns om JS fastnar
+            setTimeout(() => {
+                faders.forEach(fader => fader.classList.add('visible'));
+            }, 1500);
+
+            // --- 2. Kinetisk Reveal Effekt ---
+            const kineticBox = document.querySelector('.kinetic-wrapper');
+            if (kineticBox) {
+                const kineticObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) entry.target.classList.add('is-open');
+                        else entry.target.classList.remove('is-open');
+                    });
+                }, { threshold: 0.5 });
+                kineticObserver.observe(kineticBox);
+            }
+
+            // --- 3. Dynamisk Ruttspårning ---
+            const routeSection = document.querySelector('.dynamic-route-section');
+            const pathActive = document.getElementById('route-path-active');
+            const vanIcon = document.getElementById('van-icon');
+
+            if (routeSection && pathActive && vanIcon) {
+                const pathLength = pathActive.getTotalLength();
+                pathActive.style.strokeDasharray = pathLength;
+                pathActive.style.strokeDashoffset = pathLength;
+                
+                window.addEventListener('scroll', () => {
+                    const rect = routeSection.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    if (rect.top < windowHeight && rect.bottom > 0) {
+                        let progress = (windowHeight - rect.top) / (rect.height + windowHeight * 0.5);
+                        progress = Math.max(0, Math.min(1, progress));
+                        
+                        pathActive.style.strokeDashoffset = pathLength - (progress * pathLength);
+                        
+                        if (progress > 0.05 && progress < 0.95) {
+                            vanIcon.classList.add('visible');
+                            const point = pathActive.getPointAtLength(progress * pathLength);
+                            const svg = document.querySelector('.route-svg');
+                            const svgRect = svg.getBoundingClientRect();
+                            
+                            const scaleX = svgRect.width / 800;
+                            const scaleY = svgRect.height / 400;
+                            
+                            vanIcon.style.left = (40 + point.x * scaleX) + 'px';
+                            vanIcon.style.top = (40 + point.y * scaleY) + 'px';
+                        } else {
+                            vanIcon.classList.remove('visible');
+                        }
+                    }
+                });
+            }
+        }
+
+        // Bomb-säker initiering av scriptet oavsett webbläsarmiljö
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAnimations);
+        } else {
+            initAnimations();
+        }
+    </script>
+</body>
+</html>
