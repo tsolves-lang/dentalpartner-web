@@ -58,47 +58,37 @@
         </div>
     </section>
 
-    <section class="cta-section fade-in">
+    <section class="kinetic-section">
         <div class="container">
-            <h2>Redo att boka din första transport?</h2>
-            <p>Vi finns här för att underlätta din logistik. Ring oss direkt för att beställa en omedelbar upphämtning eller för att diskutera ett fast schema för ditt dentallab.</p>
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 40px;">Sömlös integration i ert flöde</h2>
             
-            <div class="contact-box">
-                <a href="tel:+46733211751" class="phone-link">
-                    <span class="phone-icon">📞</span> 070-791 35 25
-                </a>
-                <p class="opening-hours">Måndag – Torsdag: 06:00 – 15:30 <br> Fredag: 06:00 – 13:00</p>
-                <p class="email-text">E-post: gbg.dentalpartnerab@gmail.com</p>
+            <div class="kinetic-wrapper fade-in">
+                <div class="kinetic-inside">
+                    <div class="kinetic-inside-content">
+                        <h3>Vägen från Lab till Klinik</h3>
+                        <p>Vår logistik arbetar dynamiskt i bakgrunden så att ni kan fokusera helt på hantverket och patienten.</p>
+                    </div>
+                </div>
+                <div class="kinetic-door door-top">
+                    <span class="kinetic-icon">🦷</span>
+                    <h3>Lab till Klinik</h3>
+                </div>
+                <div class="kinetic-door door-bottom">
+                    <p>Scrolla för att se insidan ↓</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 Dental Partner. Alla rättigheter reserverade. Webbplatsen använder inga spårningskakor.</p>
-        </div>
-    </footer>
-
-    <!-- Script för fade-in effekter vid scroll -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const faders = document.querySelectorAll('.fade-in');
-            const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                });
-            }, appearOptions);
-            faders.forEach(fader => { appearOnScroll.observe(fader); });
-            
-            // Tvinga hero-innehållet att visas direkt när sidan laddas
-            const heroContent = document.querySelector('.hero-content.fade-in');
-            if(heroContent) {
-                setTimeout(() => { heroContent.classList.add('visible'); }, 100);
-            }
-        });
-    </script>
-</body>
-</html>
+    <section class="dynamic-route-section">
+        <div class="container">
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 40px;">Följ er leverans i realtid</h2>
+            <div class="route-map-container fade-in">
+                
+                <svg class="route-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+                    <path id="route-path" d="M 50 350 C 150 350, 200 150, 400 150 C 600 150, 650 50, 750 50" fill="none" stroke="#E2E8F0" stroke-width="8" stroke-linecap="round"/>
+                    
+                    <path id="route-path-active" d="M 50 350 C 150 350, 200 150, 400 150 C 600 150, 650 50, 750 50" fill="none" stroke="var(--color-brand-green)" stroke-width="8" stroke-linecap="round"/>
+                    
+                    <circle cx="50" cy="350" r="12" fill="var(--color-brand-green)" />
+                    <text x="50" y="385" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="var
