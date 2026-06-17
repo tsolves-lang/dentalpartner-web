@@ -130,3 +130,54 @@ p {
   border-radius: 50px; /* Gör knappen snyggt rundad */
   box-shadow: 0 4px 6px rgba(149, 193, 30, 0.2);
 }
+
+/* Container för att hålla innehållet centrerat */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Rutnätet för tjänsterna */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+/* Designen för varje enskilt kort */
+.service-card {
+  background-color: var(--color-bg-white);
+  padding: 40px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px); /* Kortet lyfter lite när man hovrar över det */
+}
+
+.service-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--color-text-main);
+}
+
+.service-card p {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+/* Tillfällig platshållare för dina framtida ikoner */
+.icon-placeholder {
+  display: inline-block;
+  background-color: #e5f0c2; /* Ljusgrön ton från din logotyp */
+  color: var(--color-brand-green-hover);
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
