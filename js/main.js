@@ -24,10 +24,20 @@ document.addEventListener("DOMContentLoaded", function() {
     // --- 3. Hamburgermeny ---
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Hindrar klicket från att störa andra fönsterhändelser
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('open');
+        });
+
+        // Stäng menyn automatiskt om man klickar på en länk
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('open');
+            });
         });
     }
 
@@ -64,9 +74,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (progress > 0.05 && progress < 0.95) {
                     vanIcon.classList.add('visible');
                     const point = pathActive.getPointAtLength(progress * pathLength);
-                    const svgRect = document.querySelector('.route-svg').getBoundingClientRect();
-                    vanIcon.style.left = (40 + point.x * (svgRect.width / 800)) + 'px';
-                    vanIcon.style.top = (40 + point.y * (svgRect.height / 400)) + 'px';
+                    const svgElement = document.querySelector('.route-svg');
+                    if (svgElement) {
+                        const svgRect = svgElement.getBoundingClientRect();
+                        vanIcon.style.left = (40 + point.x * (svgRect.width / 800)) + 'px';
+                        vanIcon.style.top = (40 + point.y * (svgRect.height / 400)) + 'px';
+                    }
                 } else {
                     vanIcon.classList.remove('visible');
                 }
