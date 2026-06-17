@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Våra Tjänster | Dental Partner</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -10,11 +10,18 @@
 
     <header>
         <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="Dental Partner Logotyp">
+            <img src="images/logo.png" alt="Dental Partner">
         </a>
-        <nav>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav id="nav-menu">
             <a href="index.html">Startsida</a>
-            <a href="tjanster.html" style="color: var(--color-brand-green);">Tjänster</a>
+            <a href="tjanster.html">Tjänster</a>
             <a href="om-oss.html">Om oss</a>
         </nav>
     </header>
@@ -33,14 +40,14 @@
                 <div class="feature-item fade-in">
                     <div class="feature-text">
                         <h2>Vi kan dentalbranschen.</h2>
-                        <p>För dig som tandtekniker är din tid på labbet värdefull. Det är oerhört viktigt att kunna koncentrera sig på produktion och noggrannhet, eftersom det är något som de flesta tandläkare ställer höga krav på. Dagarna då du var tvungen att agera din egen budchaufför och ge dig ut i trafiken är förbi.</p>
+                        <p>För dig som tandtekniker är din time på labbet värdefull. Det är oerhört viktigt att kunna koncentrera sig på produktion och noggrannhet, eftersom det är något som de flesta tandläkare ställer höga krav på. Dagarna då du var tvungen att agera din egen budchaufför och ge dig ut i trafiken är förbi.</p>
                     </div>
                 </div>
 
                 <div class="feature-item fade-in">
                     <div class="feature-text">
                         <h2>Hög servicenivå – Vi hämtar ofta!</h2>
-                        <p>Våra medarbetare besöker tandläkarna flera gånger om dagen. Det innebär att dina kunder får sina färdiga arbeten snabbare, vilket ger ditt lab en servicenivå som vanliga, generella budfirmor helt enkelt inte kan matcha. Vi förstår att vi utför ett viktigt arbete för samhället – timmarna du lägger på labbet är nyckeln till många människors fina leenden.</p>
+                        <p>Våra medarbetare besöker tandläkarna flera gånger om dagen. Det innebär dat dina kunder får sina färdiga arbeten snabbare, vilket ger ditt lab en servicenivå som vanliga, generella budfirmor helt enkelt inte kan matcha. Vi förstår att vi utför ett viktigt arbete för samhället – timmarna du lägger på labbet är nyckeln till många människors fina leenden.</p>
                     </div>
                 </div>
 
@@ -69,19 +76,6 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const faders = document.querySelectorAll('.fade-in');
-            const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                });
-            }, appearOptions);
-            faders.forEach(fader => { appearOnScroll.observe(fader); });
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
