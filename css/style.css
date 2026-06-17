@@ -144,18 +144,15 @@ p {
   text-align: center;
   min-height: 70vh;
   
-  /* REN OCH LYXIG PARALLAX - Redo för bild */
-  background-color: #E2E8F0; /* En mjuk, lyxig silvergrå bas */
-  
-  /* LÄGG TILL EN BILD SÅ HÄR (ta bort // framför när du har en bild i images-mappen): */
-   background-image: url('../images/hero-bg.jpg'); */
+  /* LÄGGER IN DIN STOCKHOLMS-BILD HÄR */
+  background-color: #E2E8F0;
+  background-image: url('../images/hero-bg.jpg');
   
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   
-  /* En subtil inre skugga för att rama in texten snyggt */
   box-shadow: inset 0 0 100px rgba(0,0,0,0.05); 
 }
 
@@ -171,6 +168,13 @@ p {
   z-index: 2;
   max-width: 800px;
   margin: 0 auto;
+  
+  /* FROSTAT GLAS-EFFEKT: Gör texten 100% läsbar oavsett hur bilden ser ut */
+  background: rgba(255, 255, 255, 0.85); /* Vit, något genomskinlig */
+  padding: 50px;
+  border-radius: 16px; /* Mjuka hörn */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* En subtil skugga för att lyfta boxen */
+  backdrop-filter: blur(5px); /* Skapar en elegant suddig effekt bakom rutan */
 }
 
 .hero-content h1 {
