@@ -427,16 +427,19 @@ p {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Centrerar innehåll vertikalt */
+  align-items: center;     /* Centrerar innehåll horisontellt oavsett skärm */
   overflow: hidden;
   padding-top: 50px;
 }
 
 .horizontal-title {
   text-align: center;
-  margin-bottom: 60px;
-  padding: 0 50px;
+  margin: 0 auto 60px auto; /* Håller rubriken balanserad och centrerad */
+  padding: 0 20px;
   color: var(--color-text-main);
+  width: 100%;
+  max-width: 1200px;        /* Begränsar bredden på superstora skärmar */
 }
 
 .horizontal-track {
@@ -615,7 +618,7 @@ footer {
 
 .stat-label {
   font-size: 14px;
-  color: var(--color-text-muted);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
