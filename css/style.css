@@ -20,6 +20,7 @@ body {
   color: var(--color-text-main);
   background-color: var(--color-bg-white);
   line-height: 1.6;
+  overflow-x: hidden; /* Förhindrar horisontell scroll om animationer puttar ut saker */
 }
 
 /* Navigering */
@@ -30,6 +31,9 @@ header {
   padding: 20px 50px;
   background-color: var(--color-bg-white);
   border-bottom: 1px solid #eaeaea;
+  position: sticky; /* Fäster menyn i toppen när du scrollar! */
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
@@ -130,7 +134,7 @@ p {
   box-shadow: 0 4px 6px rgba(149, 193, 30, 0.2);
 }
 
-/* --- Parallax Hero Sektion (Speciell för Startsidan) --- */
+/* --- Parallax Hero Sektion --- */
 .parallax-container {
   position: relative;
   padding: 150px 50px;
@@ -146,6 +150,12 @@ p {
   background-size: 40px 40px;
   background-attachment: fixed; /* Detta låser mönstret på plats */
   background-position: center;
+}
+
+/* Mindre höjd för parallax på undersidor */
+.parallax-container.sm {
+    min-height: 40vh;
+    padding: 100px 50px;
 }
 
 /* Innehållet överst i Parallaxen */
@@ -425,4 +435,17 @@ footer {
     flex: 1;
     grid-template-columns: 1fr;
   }
+}
+
+/* --- Fade-in effekter (NYTT) --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

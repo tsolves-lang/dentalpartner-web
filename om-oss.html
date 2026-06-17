@@ -8,7 +8,6 @@
 </head>
 <body>
 
-    <!-- Navigering -->
     <header>
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Dental Partner Logotyp">
@@ -20,34 +19,33 @@
         </nav>
     </header>
 
-    <!-- Toppsektion / Intro -->
-    <section class="hero" style="padding: 80px 50px;">
-        <h1>Ett välfungerande koncept sedan 1995.</h1>
-        <p>Läs om vår resa från starten i Stockholm till att bli en ledande aktör inom specialiserad logistik för dentalbranschen.</p>
+    <section class="parallax-container sm">
+        <div class="hero-content">
+            <h1>Ett välfungerande koncept sedan 1995.</h1>
+            <p>Läs om vår resa från starten i Stockholm till att bli en ledande aktör inom specialiserad logistik för dentalbranschen.</p>
+        </div>
     </section>
 
-    <!-- Historik och Statistik -->
     <section class="bg-gray">
         <div class="container">
             <div class="about-layout">
                 
-                <div class="about-main-text">
+                <div class="about-main-text fade-in">
                     <h2>Grundades 1995 i Stockholm</h2>
                     <p>DP Dental Partner AB grundades 1995 med en tydlig vision: att erbjuda skräddarsydd logistik med högsta möjliga service för dentalbranschen. Genom att fokusera hela vår verksamhet exklusivt mot tandtekniker och tandläkare har vi kunnat bygga upp ett unikt, tidseffektivt och djupt specialiserat arbetssystem.</p>
                     <p>Idag är vi ledande inom budservice till dentalbranschen. Våra konkurrenskraftiga priser, tillsammans med vår branschanpassade service och personliga bemötande, har varit helt avgörande för att vi lyckats etablera oss så starkt.</p>
                 </div>
 
-                <!-- Statistikrutor (Bygger stark trovärdighet) -->
                 <div class="stats-grid">
-                    <div class="stat-box">
+                    <div class="stat-box fade-in" style="transition-delay: 0.1s;">
                         <span class="stat-number">30+</span>
                         <span class="stat-label">Års Erfarenhet</span>
                     </div>
-                    <div class="stat-box">
+                    <div class="stat-box fade-in" style="transition-delay: 0.2s;">
                         <span class="stat-number">85</span>
                         <span class="stat-label">Tandtekniska Lab</span>
                     </div>
-                    <div class="stat-box">
+                    <div class="stat-box fade-in" style="transition-delay: 0.3s;">
                         <span class="stat-number">600+</span>
                         <span class="stat-label">Försändelser / Dag</span>
                     </div>
@@ -57,21 +55,33 @@
         </div>
     </section>
 
-    <!-- Centraliserad Kontaktsektion -->
-    <section class="cta-section" style="padding: 80px 50px;">
+    <section class="cta-section fade-in" style="padding: 80px 50px;">
         <div class="container">
             <h2>Kontakta oss kring era frågor och funderingar</h2>
             <p>Vi finns alltid tillgängliga för att svara på frågor kring hur våra tjänster fungerar eller för att hjälpa er att beställa en upphämtning. Tveka inte att höra av er direkt till oss.</p>
-            <a href="tel:+46733211751" class="phone-link">📞 079-791 35 25</a>
+            <a href="tel:+46733211751" class="phone-link">📞 070-791 35 25</a>
         </div>
     </section>
 
-    <!-- Sidfot -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Dental Partner. Alla rättigheter reserverade. Webbplatsen använder inga spårningskakor.</p>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                });
+            }, appearOptions);
+            faders.forEach(fader => { appearOnScroll.observe(fader); });
+        });
+    </script>
 </body>
 </html>

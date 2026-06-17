@@ -8,7 +8,6 @@
 </head>
 <body>
 
-    <!-- Navigering -->
     <header>
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Dental Partner Logotyp">
@@ -20,35 +19,32 @@
         </nav>
     </header>
 
-    <!-- Toppsektion / Intro -->
-    <section class="hero" style="padding: 80px 50px;">
-        <h1>Vårt koncept är ett tillväxtrecept.</h1>
-        <p>Vi erbjuder tandtekniska lab möjligheten till bättre lönsamhet. Genom att låta oss fokusera på logistiken kan ni sköta det som är allra viktigast för er – att fokusera på kvalité.</p>
+    <section class="parallax-container sm">
+        <div class="hero-content">
+            <h1>Vårt koncept är ett tillväxtrecept.</h1>
+            <p>Vi erbjuder tandtekniska lab möjligheten till bättre lönsamhet. Genom att låta oss fokusera på logistiken kan ni sköta det som är allra viktigast för er – att fokusera på kvalité.</p>
+        </div>
     </section>
 
-    <!-- Fördjupning av tjänster -->
     <section class="bg-gray">
         <div class="container">
             <div class="features-list">
                 
-                <!-- Tjänst 1 -->
-                <div class="feature-item">
+                <div class="feature-item fade-in">
                     <div class="feature-text">
                         <h2>Vi kan dentalbranschen.</h2>
                         <p>För dig som tandtekniker är din tid på labbet värdefull. Det är oerhört viktigt att kunna koncentrera sig på produktion och noggrannhet, eftersom det är något som de flesta tandläkare ställer höga krav på. Dagarna då du var tvungen att agera din egen budchaufför och ge dig ut i trafiken är förbi.</p>
                     </div>
                 </div>
 
-                <!-- Tjänst 2 -->
-                <div class="feature-item">
+                <div class="feature-item fade-in">
                     <div class="feature-text">
                         <h2>Hög servicenivå – Vi hämtar ofta!</h2>
                         <p>Våra medarbetare besöker tandläkarna flera gånger om dagen. Det innebär att dina kunder får sina färdiga arbeten snabbare, vilket ger ditt lab en servicenivå som vanliga, generella budfirmor helt enkelt inte kan matcha. Vi förstår att vi utför ett viktigt arbete för samhället – timmarna du lägger på labbet är nyckeln till många människors fina leenden.</p>
                     </div>
                 </div>
 
-                <!-- Tjänst 3 -->
-                <div class="feature-item">
+                <div class="feature-item fade-in">
                     <div class="feature-text">
                         <h2>Befinn dig på flera ställen samtidigt.</h2>
                         <p>Genom att dela upp staden i välplanerade distrikt erbjuder vi ditt dentallab möjligheten att nå ut till större delar av regionen på ett extremt effektivt och miljövänligt sätt. Vi samordnar transporterna i våra ekonomiska, smidiga personbilar (VW Golf/Polo) och skyddar dina känsliga avtryck och kronor i de karaktäristiska små, vita papperspåsarna.</p>
@@ -59,21 +55,33 @@
         </div>
     </section>
 
-    <!-- Uppringningsmodul -->
-    <section class="cta-section" style="padding: 60px 50px;">
+    <section class="cta-section fade-in" style="padding: 60px 50px;">
         <div class="container">
             <h2>Vill du ansluta ditt lab till vårt nätverk?</h2>
             <p>Ring oss idag så sätter vi upp en logistikplan som passar just dina hämtningstider.</p>
-            <a href="tel:+46733211751" class="phone-link">📞 079-791 35 25</a>
+            <a href="tel:+46733211751" class="phone-link">📞 070-791 35 25</a>
         </div>
     </section>
 
-    <!-- Sidfot -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Dental Partner. Alla rättigheter reserverade. Webbplatsen använder inga spårningskakor.</p>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                });
+            }, appearOptions);
+            faders.forEach(fader => { appearOnScroll.observe(fader); });
+        });
+    </script>
 </body>
 </html>
