@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Om oss | Dental Partner</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -10,12 +10,19 @@
 
     <header>
         <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="Dental Partner Logotyp">
+            <img src="images/logo.png" alt="Dental Partner">
         </a>
-        <nav>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav id="nav-menu">
             <a href="index.html">Startsida</a>
             <a href="tjanster.html">Tjänster</a>
-            <a href="om-oss.html" style="color: var(--color-brand-green);">Om oss</a>
+            <a href="om-oss.html">Om oss</a>
         </nav>
     </header>
 
@@ -69,19 +76,6 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const faders = document.querySelectorAll('.fade-in');
-            const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                });
-            }, appearOptions);
-            faders.forEach(fader => { appearOnScroll.observe(fader); });
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
